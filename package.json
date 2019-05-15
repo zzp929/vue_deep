@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zzp929/vueDeep.git"
+    "url": "git+https://github.com/zzp929/vue_deep.git"
   },
   "keywords": [
-    "vue"
+    "vue_deep"
   ],
   "author": "zzp",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zzp929/vueDeep/issues"
+    "url": "https://github.com/zzp929/vue_deep/issues"
   },
-  "homepage": "https://github.com/zzp929/vueDeep#readme",
+  "homepage": "https://github.com/zzp929/vue_deep#readme",
   "dependencies": {
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",

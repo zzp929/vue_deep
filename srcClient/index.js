@@ -12,6 +12,30 @@ Vue.use(Vuex)
 
 const router = createRouter();
 const store = createStore();
+
+// store.watch((state) => state.count + 1, (newCount) => {
+//   console.log('new count watched:', newCount)
+// })
+
+//相当于vuex中plugins插件，mutation调用信息
+// store.subscribe((mutation, state) => {
+//   console.log(mutation.type)
+//   console.log(mutation.payload)
+// })
+
+store.subscribeAction((action, state) => {
+  console.log(action.type)
+  console.log(action.payload)
+})
+
+//动态加载模块
+store.registerModule('c', {
+    state: {
+        text: 3
+    }
+})
+
+// store.unregisterModule('c')
 // 路由守卫
 // 全局前置守卫，每次路由改变都会被首先调用
 router.beforeEach((to, from, next) => {

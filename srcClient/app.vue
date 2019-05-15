@@ -3,7 +3,8 @@
         <div id="cover"></div>
         <Header></Header>
         <p>{{count}}</p>
-        <p>{{fullName}}</p>
+        <p>{{fullName}}{{textPlus}}</p>
+        <p>{{textA}}-{{textB}}-{{textC}}</p>
         <router-link to="/app">app</router-link>
         <router-link :to="{name:'login'}">login</router-link>
         <!--<Todo></Todo>-->
@@ -29,9 +30,13 @@
             console.log(this.$store);
             let i = 1
             this.updateCountAsync({
-                num: 5,
+                num: 5555,
                 time: 2000
             })
+
+            this['a/add']()
+
+            this['a/updateText'](999)
             // this.$store.dispatch('updateCountAsync', {
             //     num: 5,
             //     time: 2000
@@ -40,7 +45,7 @@
             //     // this.$store.state.count = 2
             //     // 调用mutations方法，通过commit,不可通过上面代码修改
             //     this.$store.commit('updateCount', i++)
-            this.updateCount('updateCount', i++)
+            // // this.updateCount('updateCount', i++)
             // }, 1000)
         },
         computed: {
@@ -48,19 +53,25 @@
             // ...mapState(['count']),//同名情况直接一个数组，不同名情况用一个{ }
             ...mapState({
                 // count: 'count',//同下
-                count: (state) => state.count
+                count: (state) => state.count,
+                textA: (state) => state.a.text,
+                textB: (state) => state.b.text,
+                textC: (state) => state.c.text
             }),
             // count() {
             //     return this.$store.state.count
             // },
-            ...mapGetters(['fullName'])
+            ...mapGetters({
+                fullName: 'fullName',
+                textPlus: 'a/textPlus'
+            })
             // fullName() {
             //     return this.$store.getters.fullName
             // }
         },
         methods: {
-            ...mapActions(['updateCountAsync']),
-            ...mapMutations(['updateCount'])
+            ...mapActions(['updateCountAsync', 'a/add']),
+            ...mapMutations(['updateCount', 'a/updateText'])
         },
         components: {
             Header,
