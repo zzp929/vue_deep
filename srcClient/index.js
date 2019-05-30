@@ -22,7 +22,7 @@ const store = createStore();
 //   console.log(mutation.type)
 //   console.log(mutation.payload)
 // })
-
+// action调用信息
 store.subscribeAction((action, state) => {
   console.log(action.type)
   console.log(action.payload)

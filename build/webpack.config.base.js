@@ -8,7 +8,8 @@ const config = {
     output: {
         filename: 'bundle.[hash:8].js', //出口文件
         path: path.join(__dirname, '../dist'), //输出路径
-        publicPath: "/"
+        publicPath: "/",
+        // publicPath: "http://127.0.0.1:8000/public/"
     },
     resolve: {
         alias: {//路径别名
@@ -63,7 +64,7 @@ const config = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()     ////Vue-loader在15.*之后的版本都是 vue-loader的使用都是需要伴生 VueLoaderPlugin的,
+        new VueLoaderPlugin(),     ////Vue-loader在15.*之后的版本都是 vue-loader的使用都是需要伴生 VueLoaderPlugin的,
     ]
 };
 module.exports = config;

@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')//把非js代码�
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')//合并不同的webpack配置
 const cleanWebpackPlugin = require('clean-webpack-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
+
 const isDEV = process.env.NODE_ENV === 'development';   //判断命令的env是什么；由于装了cross-env 所以mac windows适配
 
 let config;
@@ -58,6 +60,7 @@ if (isDEV) {
 
             new webpack.HotModuleReplacementPlugin(),//是每次只刷新改变的组件，完善hot
             // new webpack.NoEmitOnErrorsPlugin()       //NoEmitOnErrorsPlugin可以减少调试时候不必要的功能展示----webpack4以废弃
+            new VueClientPlugin()
         ]
     })
 }
@@ -113,7 +116,8 @@ else {
             // new ExtractPlugin('styles.[contentHash:8].css'),
             new MiniCssExtractPlugin({
                 filename: 'style.[contentHash:8].css'
-            })
+            }),
+            new VueClientPlugin()
             //webpack4升级这部分废弃，采用optimization
             // //注意vendor放在runtime前面
             // new webpack.optimize.CommonsChunkPlugin({

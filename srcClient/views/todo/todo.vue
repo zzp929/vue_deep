@@ -56,6 +56,7 @@
         },
         mounted() {
             // this.$route 相当于 this.$router.currentRoute
+            console.log(this.$router);
             console.log(this.$route);
             console.log(this.id);
         },
